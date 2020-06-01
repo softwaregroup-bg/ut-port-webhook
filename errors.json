@@ -1,0 +1,8 @@
+{
+    "webhook.http": "HTTP response error",
+    "webhook.integrityValidationFailed": "Integrity validation failed",
+    "webhook.invalidMode": "Invalid mode",
+    "webhook.invalidSend": "Cannot call send when mode='reply'",
+    "webhook.missingHeader": "Missing header {header}",
+    "webhook.malformedHeader": "Malformed header {header}"
+}
