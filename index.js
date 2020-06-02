@@ -256,6 +256,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         assign: 'auth',
                         failAction: 'error',
                         method: async({payload, headers, params, server, info, url, pre}) => {
+                            const {host, hostname, id, received, referrer, remoteAddress, remotePort} = info;
                             return new Promise((resolve, reject) => {
                                 stream.push([
                                     pre.body,
@@ -266,7 +267,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                                         headers,
                                         params,
                                         serverInfo: server.info,
-                                        requestInfo: info,
+                                        requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort},
                                         url,
                                         reply: (auth, $meta) => {
                                             if (!$meta || $meta.mtid === 'error') {
@@ -281,6 +282,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                     }
                 ],
                 handler: ({payload, headers, params, server, info, url, pre}, h) => {
+                    const {host, hostname, id, received, referrer, remoteAddress, remotePort} = info;
                     const $meta = {
                         mtid: 'request',
                         method: this.config.hook + '.message',
@@ -289,7 +291,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         headers,
                         params,
                         serverInfo: server.info,
-                        requestInfo: info,
+                        requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort},
                         url
                     };
                     const reply = (params = {}) => {
