@@ -1,3 +1,12 @@
+## [7.2.2](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v7.2.1...v7.2.2) (2020-10-28)
+
+
+### Bug Fixes
+
+* upgrade hapi ([0b7686c](https://github.com/softwaregroup-bg/ut-port-webhook/commit/0b7686ccaf111ad65097f53d3c0f480fefcb6855))
+
+
+
 ## [7.2.1](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v7.2.0...v7.2.1) (2020-06-02)
 
 
