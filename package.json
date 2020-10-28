@@ -4,17 +4,17 @@
     "main": "index.js",
     "browser": "browser.js",
     "dependencies": {
-        "@hapi/boom": "7.4.11",
-        "@hapi/hapi": "18.4.0",
+        "@hapi/boom": "9.1.0",
+        "@hapi/hapi": "20.0.1",
         "bourne": "1.1.1",
         "request": "2.88.0"
     },
     "devDependencies": {
-        "sort-keys": "2.0.0",
+        "sort-keys": "4.1.0",
         "tap": "^12.5.3",
-        "ut-function.capture-hapi": "^1.1.0",
-        "ut-function.capture-request": "^1.1.0",
-        "ut-tools": "^6.33.4"
+        "ut-function.capture-hapi": "^1.1.1",
+        "ut-function.capture-request": "^1.1.1",
+        "ut-tools": "^6.34.2"
     },
     "optionalDependencies": {
         "ut-browser-request": "^1.0.2"
