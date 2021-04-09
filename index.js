@@ -123,11 +123,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                 schema = validation.result;
             }
             if (schema) {
-                const validate = msg => {
-                    return new Promise((resolve, reject) => {
-                        return schema.validate(msg, (err, result) => err ? reject(err) : resolve(result));
-                    });
-                };
+                const validate = msg => schema.validateAsync(msg);
                 if (type === 'send') {
                     return {
                         name,
