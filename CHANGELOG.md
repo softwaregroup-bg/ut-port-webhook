@@ -1,3 +1,17 @@
+# [8.0.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v7.2.2...v8.0.0) (2021-04-09)
+
+
+### Features
+
+* upgrade joi ([bb075d6](https://github.com/softwaregroup-bg/ut-port-webhook/commit/bb075d6d0f1d05fc6f41782402f41231218e697a))
+
+
+### BREAKING CHANGES
+
+* requires validations to be based on joi 17
+
+
+
 ## [7.2.2](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v7.2.1...v7.2.2) (2020-10-28)
 
 
