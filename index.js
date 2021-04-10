@@ -4,6 +4,7 @@ const errors = require('./errors');
 const bourne = require('bourne');
 const querystring = require('querystring');
 const Boom = require('@hapi/boom');
+const uuid = require('uuid').v4;
 
 module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort extends utPort {
     get defaults() {
@@ -264,6 +265,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                                         params,
                                         serverInfo: server.info,
                                         requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort},
+                                        forward: {'x-b3-traceid': uuid().replace(/-/g, '')},
                                         url,
                                         reply: (auth, $meta) => {
                                             if (!$meta || $meta.mtid === 'error') {
