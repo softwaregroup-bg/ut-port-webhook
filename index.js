@@ -37,7 +37,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
         };
     }
 
-    getUriFromMeta({headers, serverInfo, requestInfo}) {
+    getUriFromMeta({request: {headers, serverInfo, requestInfo}}) {
         let uri = '';
         // protocol
         if (headers['x-forwarded-proto']) { // in case of proxy / load balancer
@@ -257,14 +257,10 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                             return new Promise((resolve, reject) => {
                                 stream.push([
                                     pre.body,
-                                    {
+                                    Object.defineProperty({
                                         mtid: 'request',
                                         method: this.config.hook + '.identity',
-                                        payload,
-                                        headers,
                                         params,
-                                        serverInfo: server.info,
-                                        requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort},
                                         forward: {'x-b3-traceid': uuid().replace(/-/g, '')},
                                         url,
                                         reply: (auth, $meta) => {
@@ -273,7 +269,14 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                                             }
                                             resolve(auth);
                                         }
-                                    }
+                                    }, 'request', {
+                                        value: {
+                                            headers,
+                                            payload,
+                                            serverInfo: server.info,
+                                            requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort}
+                                        }
+                                    })
                                 ]);
                             });
                         }
@@ -281,17 +284,21 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                 ],
                 handler: ({payload, headers, params, server, info, url, pre}, h) => {
                     const {host, hostname, id, received, referrer, remoteAddress, remotePort} = info;
-                    const $meta = {
+                    const $meta = Object.defineProperty({
                         mtid: 'request',
                         method: this.config.hook + '.message',
                         auth: pre.auth,
-                        payload,
-                        headers,
                         params,
-                        serverInfo: server.info,
-                        requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort},
+                        forward: {'x-b3-traceid': uuid().replace(/-/g, '')},
                         url
-                    };
+                    }, 'request', {
+                        value: {
+                            headers,
+                            payload,
+                            serverInfo: server.info,
+                            requestInfo: {host, hostname, id, received, referrer, remoteAddress, remotePort}
+                        }
+                    });
                     const reply = (params = {}) => {
                         const { body, code } = {...this.config.response, ...params};
                         return h.response(body).code(code);
