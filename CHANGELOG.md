@@ -1,3 +1,12 @@
+## [8.0.1](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.0...v8.0.1) (2021-04-10)
+
+
+### Bug Fixes
+
+* generate traceid ([b1fd7cd](https://github.com/softwaregroup-bg/ut-port-webhook/commit/b1fd7cd25365acf26b2e3fef08f272b3fc850a88))
+
+
+
 # [8.0.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v7.2.2...v8.0.0) (2021-04-09)
 
 
