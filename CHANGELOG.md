@@ -1,3 +1,12 @@
+## [8.0.2](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.1...v8.0.2) (2021-04-10)
+
+
+### Bug Fixes
+
+* do not serialize headers, payload and info ([ec44c0b](https://github.com/softwaregroup-bg/ut-port-webhook/commit/ec44c0b9341e50f4230b08881a057ecb405f21a6))
+
+
+
 ## [8.0.1](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.0...v8.0.1) (2021-04-10)
 
 
