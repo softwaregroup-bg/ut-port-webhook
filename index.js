@@ -176,7 +176,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
             {name: this.config.id + '-send', ...this.config.capture}) : request;
         this.config.k8s = {
             ports: [{
-                name: 'http-webhook',
+                name: 'http-' + this.config.namespace.replace(/\//, '-').toLowerCase(),
                 service: true,
                 ingress: {
                     host: this.config.server.host,
