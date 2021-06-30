@@ -1,3 +1,12 @@
+## [8.0.5](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.4...v8.0.5) (2021-06-30)
+
+
+### Bug Fixes
+
+* avoid logging  through a destroyed logger [UTCORE-121] ([0d43566](https://github.com/softwaregroup-bg/ut-port-webhook/commit/0d43566ebd1dd0f9b96ec60017c08bb2729bfed9))
+
+
+
 ## [8.0.4](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.3...v8.0.4) (2021-04-13)
 
 

@@ -1,6 +1,6 @@
 {
     "name": "ut-port-webhook",
-    "version": "8.0.4",
+    "version": "8.0.5",
     "main": "index.js",
     "browser": "browser.js",
     "dependencies": {
