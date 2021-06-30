@@ -363,4 +363,8 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
         }
         return super.stop(...arguments);
     }
+
+    error(error) {
+        return (this.state !== 'stopped' || error.code !== 'ECONNRESET') && super.error(...arguments);
+    }
 };
