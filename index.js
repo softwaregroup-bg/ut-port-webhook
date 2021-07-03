@@ -180,7 +180,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                 service: true,
                 ingress: (this.config.ingress || [this.config.path]).map(path => ({
                     host: this.config.server.host,
-                    name: this.config.server.host.replace(/\./g, '-'),
+                    ...this.config.server.host && {name: this.config.server.host.replace(/\./g, '-')},
                     path: path.replace(/\/\{.*/, '')
                 })),
                 containerPort: this.config.server.port
