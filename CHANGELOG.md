@@ -1,3 +1,12 @@
+# [8.1.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.5...v8.1.0) (2021-07-03)
+
+
+### Features
+
+* support multiple ingress paths [UTCORE-121] ([24c6339](https://github.com/softwaregroup-bg/ut-port-webhook/commit/24c633915f3b14304d251877856f442e2e93e33e))
+
+
+
 ## [8.0.5](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.4...v8.0.5) (2021-06-30)
 
 
