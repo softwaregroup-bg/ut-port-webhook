@@ -1,3 +1,12 @@
+## [8.1.1](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.1.0...v8.1.1) (2021-07-03)
+
+
+### Bug Fixes
+
+* handle undefined host [UTCORE-121] ([7f32322](https://github.com/softwaregroup-bg/ut-port-webhook/commit/7f32322ed465b962c1354a3d781b3185d5371b1b))
+
+
+
 # [8.1.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.0.5...v8.1.0) (2021-07-03)
 
 
