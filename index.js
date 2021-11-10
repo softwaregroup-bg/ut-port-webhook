@@ -283,7 +283,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         }
                     }
                 ],
-                handler: ({payload, headers, params, server, info, url, pre}, h) => {
+                handler: ({payload, headers, params, query, server, info, url, pre}, h) => {
                     const {host, hostname, id, received, referrer, remoteAddress, remotePort} = info;
                     const $meta = Object.defineProperty({
                         mtid: 'request',
@@ -304,15 +304,16 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         const { body, code } = {...this.config.response, ...params};
                         return h.response(body).code(code);
                     };
+                    const msg = {...pre.body, ...query, ...params};
                     const response = () => {
-                        if (this.methods[this.config.hook + '.server.response.send']) return this.methods[this.config.hook + '.server.response.send'](pre.body, $meta);
+                        if (this.methods[this.config.hook + '.server.response.send']) return this.methods[this.config.hook + '.server.response.send'](msg, $meta);
                     };
                     return new Promise((resolve, reject) => {
                         const chain = promise => (promise || Promise.resolve({}))
                             .then(response)
                             .then(reply)
                             .then(resolve, reject);
-                        stream.push([pre.body, {
+                        stream.push([msg, {
                             ...$meta,
                             reply: (requests, $meta) => {
                                 if (requests === undefined) {
