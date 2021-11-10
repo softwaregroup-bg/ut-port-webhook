@@ -1,3 +1,12 @@
+# [8.2.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.1.1...v8.2.0) (2021-11-10)
+
+
+### Features
+
+* merge query and params in msg ([04e33b1](https://github.com/softwaregroup-bg/ut-port-webhook/commit/04e33b101171d8cf0b4fab8718573c7ac22ace9a))
+
+
+
 ## [8.1.1](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.1.0...v8.1.1) (2021-07-03)
 
 
