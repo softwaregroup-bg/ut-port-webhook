@@ -11,17 +11,17 @@
         "uuid": "3.3.2"
     },
     "devDependencies": {
-        "tap": "^12.5.3",
+        "tap": "^15.0.10",
         "ut-function.capture-hapi": "^1.1.1",
         "ut-function.capture-request": "^1.1.1",
-        "ut-tools": "^6.34.2"
+        "ut-tools": "^6.39.0"
     },
     "optionalDependencies": {
         "ut-browser-request": "^1.0.2"
     },
     "peerDependencies": {
         "ut-bus": "^7.18.1",
-        "ut-run": "^10.23.0"
+        "ut-run": "^10.64.6"
     },
     "scripts": {
         "lint": "ut-lint .",
