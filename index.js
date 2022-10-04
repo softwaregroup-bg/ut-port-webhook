@@ -305,7 +305,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                     const reply = (params = {}) => {
                         const { body, headers, code } = {...this.config.response, ...params};
                         const httpResponse = h.response(body).code(code);
-                        Object.entries(headers || {}).forEach(([key, value]) => httpResponse.header(key, value));
+                        Object.entries(merge(headers, {})).forEach(([key, value]) => httpResponse.header(key, value));
                         return httpResponse;
                     };
                     const msg = {...pre.body, ...query, ...params};
