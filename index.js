@@ -5,6 +5,7 @@ const bourne = require('bourne');
 const querystring = require('querystring');
 const Boom = require('@hapi/boom');
 const uuid = require('uuid').v4;
+const merge = require('ut-function.merge');
 
 module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort extends utPort {
     get defaults() {
@@ -55,7 +56,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
         return uri;
     }
 
-    sendRequest(params = {}) {
+    sendRequest(params = {}, $meta) {
         if (params === false) {
             return;
         }
@@ -103,6 +104,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         });
                         reject(error);
                     } else {
+                        $meta.response = merge($meta.response, {headers: response.headers});
                         resolve(body);
                     }
                 } catch (e) {
