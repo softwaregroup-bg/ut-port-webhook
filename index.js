@@ -7,7 +7,7 @@ const Boom = require('@hapi/boom');
 const uuid = require('uuid').v4;
 const merge = require('ut-function.merge');
 
-module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort extends utPort {
+module.exports = ({utPort, registerErrors, utMeta}) => class WebhookPort extends utPort {
     get defaults() {
         return {
             type: 'webhook',
@@ -56,7 +56,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
         return uri;
     }
 
-    sendRequest(params = {}, $meta) {
+    sendRequest(params = {}, $meta = utMeta()) {
         if (params === false) {
             return;
         }
