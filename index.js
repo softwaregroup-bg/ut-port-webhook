@@ -210,17 +210,17 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                 };
                 break;
             case 'map':
-                send = requests => {
+                send = (requests, $meta) => {
                     return Promise.all([].concat(requests).map(request => {
-                        return bail(this.sendRequest(request));
+                        return bail(this.sendRequest(request, $meta));
                     }));
                 };
                 break;
             case 'reduce':
-                send = requests => {
+                send = (requests, $meta) => {
                     return [].concat(requests).reduce((promise, request) => {
                         return promise.then(() => {
-                            return bail(this.sendRequest(request));
+                            return bail(this.sendRequest(request, $meta));
                         });
                     }, Promise.resolve());
                 };
@@ -331,13 +331,13 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                                     return true;
                                 }
                                 if (this.config.async === 'server') {
-                                    return send(requests);
+                                    return send(requests, $meta);
                                 }
                                 if (this.config.async === 'client') {
                                     chain();
-                                    return send(requests);
+                                    return send(requests, $meta);
                                 }
-                                return chain(send(requests));
+                                return chain(send(requests, $meta));
                             }
                         }]);
                         if (this.config.async === 'server') {
