@@ -1,3 +1,12 @@
+# [8.4.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.3.0...v8.4.0) (2022-11-04)
+
+
+### Features
+
+* allow setting response headers ([#2](https://github.com/softwaregroup-bg/ut-port-webhook/issues/2)) ([b66891f](https://github.com/softwaregroup-bg/ut-port-webhook/commit/b66891f77f8ada2a202e505e3f293e63ee584a02))
+
+
+
 # [8.3.0](https://github.com/softwaregroup-bg/ut-port-webhook/compare/v8.2.0...v8.3.0) (2022-03-13)
 
 
