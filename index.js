@@ -5,8 +5,9 @@ const bourne = require('bourne');
 const querystring = require('querystring');
 const Boom = require('@hapi/boom');
 const uuid = require('uuid').v4;
+const merge = require('ut-function.merge');
 
-module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort extends utPort {
+module.exports = ({utPort, registerErrors, utMeta}) => class WebhookPort extends utPort {
     get defaults() {
         return {
             type: 'webhook',
@@ -55,7 +56,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
         return uri;
     }
 
-    sendRequest(params = {}) {
+    sendRequest(params = {}, $meta = utMeta()) {
         if (params === false) {
             return;
         }
@@ -103,6 +104,7 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         });
                         reject(error);
                     } else {
+                        $meta.response = merge($meta.response, {headers: response.headers});
                         resolve(body);
                     }
                 } catch (e) {
@@ -301,8 +303,10 @@ module.exports = ({utPort, registerErrors, utMethod}) => class WebhookPort exten
                         }
                     });
                     const reply = (params = {}) => {
-                        const { body, code } = {...this.config.response, ...params};
-                        return h.response(body).code(code);
+                        const { body, code, headers = {} } = {...this.config.response, ...params};
+                        const httpResponse = h.response(body).code(code);
+                        Object.entries(headers).forEach(([key, value]) => httpResponse.header(key, value));
+                        return httpResponse;
                     };
                     const msg = {...pre.body, ...query, ...params};
                     const response = () => {
